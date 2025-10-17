@@ -56,9 +56,6 @@
 //   }
 // }
 
-import axios from "axios";
-import { NextResponse } from "next/server";
-
 // export async function POST(req) {
 //   try {
 //     const body = await req.json();
@@ -111,6 +108,9 @@ import { NextResponse } from "next/server";
 //   }
 // }
 
+import axios from "axios";
+import { NextResponse } from "next/server";
+
 export async function POST(req) {
   const { history = [], message } = await req.json();
 
@@ -136,14 +136,8 @@ export async function POST(req) {
 
   try {
     const response = await axios.post(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent",
-      { contents: [{ parts: [{ text: prompt }] }] },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": apikey,
-        },
-      }
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apikey}`,
+      { contents: [{ role: "user", parts: [{ text: prompt }] }] }
     );
 
     const reply =
@@ -153,6 +147,7 @@ export async function POST(req) {
     return NextResponse.json({ success: true, reply }, { status: 200 });
   } catch (err) {
     console.error("Gemini Error:", err.response?.data || err.message);
+
     return NextResponse.json(
       {
         success: false,
