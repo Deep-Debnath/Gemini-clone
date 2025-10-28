@@ -12,27 +12,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Gemini Chat | AI Chat Assistant",
+  title: "Gemini Chat | Smart AI Chat Assistant",
   description:
-    "A modern AI-powered chat app built with Next.js and Gemini API. Chat naturally with real-time responses and smart memory.",
+    "Chat intelligently with Gemini — a sleek AI-powered assistant built using Next.js and Gemini API. Enjoy real-time responses, clean UI, and persistent memory for a next-gen chat experience.",
   keywords: [
-    "Gemini Chat App",
+    "Gemini Chat",
     "AI Chat App",
-    "Next.js AI",
-    "Chatbot",
-    "OpenAI Gemini",
+    "Next.js Chatbot",
+    "Gemini API",
     "AI Assistant",
+    "Deep Debnath Projects",
+    "Gemini Clone",
+    "AI Web App",
+    "Chat with Gemini",
   ],
-  authors: [{ name: "Deep Debnath", url: "https://my-portfolio-ob9g.vercel.app/" }],
+  authors: [
+    {
+      name: "Deep Debnath",
+      url: "https://my-portfolio-ob9g.vercel.app/",
+    },
+  ],
   openGraph: {
-    title: "Gemini ChatApp | AI Chat Assistant",
+    title: "Gemini Chat | Smart AI Chat Assistant",
     description:
-      "Experience fast, interactive, and intelligent conversations powered by Gemini AI.",
+      "A modern Gemini-powered chat experience — fast, interactive, and beautifully designed with Next.js.",
     url: "https://gemini-clone-5csw.vercel.app/",
     siteName: "Gemini Chat",
     images: [
       {
-        url: "/globe.svg", 
+        url: "https://www.gstatic.com/lamda/images/gemini_aurora_thumbnail_4g_e74822ff0ca4259beb718.png",
         width: 1200,
         height: 630,
         alt: "Gemini Chat Preview",
@@ -41,8 +49,20 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gemini Chat | Smart AI Chat Assistant",
+    description:
+      "Experience Gemini AI — a sleek, intelligent chat assistant built with Next.js and modern UI.",
+    images: [
+      "https://www.gstatic.com/lamda/images/gemini_aurora_thumbnail_4g_e74822ff0ca4259beb718.png",
+    ],
+    creator: "@deepdevnath",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
-
 
 export default function RootLayout({ children }) {
   return (
