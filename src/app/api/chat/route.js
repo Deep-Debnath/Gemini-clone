@@ -121,7 +121,7 @@ export async function POST(req) {
     );
   }
 
-  const apikey = process.env.GEMINI_API_KEY;
+  const apikey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
   if (!apikey) {
     return NextResponse.json(
       { success: false, error: "api key is missing" },
