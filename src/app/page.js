@@ -59,7 +59,7 @@ export default function Gemini() {
   };
 
   return (
-    <div className="flex flex-col h-screen max-w-6xl mx-auto p-4 font-[Inter]">
+    <div className="flex flex-col h-screen max-w-4xl mx-auto p-4 font-[Inter]">
       <Box
         sx={{
           display: "flex",
