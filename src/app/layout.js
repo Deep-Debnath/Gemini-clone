@@ -29,7 +29,7 @@ export const metadata = {
   authors: [
     {
       name: "Deep Debnath",
-      url: "https://my-portfolio-ob9g.vercel.app/",
+      url: "https://my-portfolio-7432.vercel.app/",
     },
   ],
   openGraph: {
