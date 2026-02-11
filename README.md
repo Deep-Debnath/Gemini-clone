@@ -71,5 +71,5 @@ Open **http://localhost:3000** in your browser.
 **Deep Debnath**  
 Frontend Developer • React / Next.js / AI Integration
 
-🌐 [Portfolio](https://my-portfolio-7432.vercel.app/)  
+🌐 [Portfolio](https://deep-debnath-portfolio.vercel.app)  
 💼 [GitHub](https://github.com/Deep-Debnath)
