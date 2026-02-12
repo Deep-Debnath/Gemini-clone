@@ -2,12 +2,12 @@ import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const { history = [], message } = await req.json();
+  const { history = [], message, image } = await req.json();
 
   if (!message) {
     return NextResponse.json(
       { success: false, error: "message should not be empty" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -15,7 +15,7 @@ export async function POST(req) {
   if (!apikey) {
     return NextResponse.json(
       { success: false, error: "api key is missing" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -24,10 +24,37 @@ export async function POST(req) {
       .map((m) => `${m.role === "user" ? "User" : "Bot"}: ${m.text}`)
       .join("\n") + `\nUser: ${message}\nBot:`;
 
+  const parts = [{ text: prompt }];
+
+  if (image) {
+    parts.push({
+      inlineData: {
+        mimeType: "image/png",
+        data: image,
+      },
+    });
+  }
+
   try {
     const response = await axios.post(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apikey}`,
-      { contents: [{ role: "user", parts: [{ text: prompt }] }] }
+      {
+        contents: [
+          {
+            role: "user",
+            parts,
+            // parts: [
+            //   { text: prompt },
+            //   {
+            //     inlineData: {
+            //       mimeType: "image/png", // or image/jpeg
+            //       data: base64Image,
+            //     },
+            //   },
+            // ],
+          },
+        ],
+      },
     );
 
     const reply =
@@ -43,7 +70,7 @@ export async function POST(req) {
         success: false,
         error: err.response?.data || err.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

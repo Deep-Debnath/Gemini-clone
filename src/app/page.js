@@ -7,12 +7,14 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { ContentCopy, Done } from "@mui/icons-material";
+import { Add, ContentCopy, Done } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 
 export default function Gemini() {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
   const [copiedIndex, setCopiedIndex] = useState(null);
   const endRef = useRef(null);
 
@@ -30,7 +32,7 @@ export default function Gemini() {
     e.preventDefault();
     if (!input.trim()) return;
 
-    const userMsg = { role: "user", text: input };
+    const userMsg = { role: "user", text: input, image: selectedFile || null };
     setMessages((prev) => [...prev, userMsg]);
 
     const currentInput = input;
@@ -41,25 +43,30 @@ export default function Gemini() {
       const response = await axios.post("/api/chat", {
         history: [...messages, userMsg],
         message: currentInput,
+        image: selectedFile || null,
       });
 
       const botMsg = { role: "bot", text: response.data.reply };
       setMessages((prev) => [...prev, botMsg]);
-    } catch(err) {
-      console.log(err);
-      
+    } catch (err) {
+      console.log(err.response);
+
       setMessages((prev) => [
         ...prev,
-        { role: "bot", text: "⚠️ Something went wrong." },
+        {
+          role: "bot",
+          text: "⚠️ Something went wrong. Try again after some time",
+        },
       ]);
     } finally {
       setLoading(false);
+      setSelectedFile(null);
     }
   };
 
   return (
     <div className="w-full bg-[#212121] text-[#ECECEC] font-sans">
-      <div className="flex flex-col h-screen max-w-4xl mx-auto p-6">
+      <div className="h-screen max-w-4xl mx-auto p-6 grid grid-rows-[auto_1fr_auto_auto]">
         <div className="flex items-center justify-between mb-6 border-b border-[#303030] pb-4">
           <h1 className="text-2xl md:text-3xl font-semibold tracking-wide">
             Chatbot
@@ -73,7 +80,6 @@ export default function Gemini() {
           </button>
         </div>
 
-        {/* Chat Area */}
         <div className="flex-1 overflow-y-auto space-y-8">
           <AnimatePresence>
             {messages.length > 0 ? (
@@ -86,8 +92,21 @@ export default function Gemini() {
                   className={m.role === "user" ? "flex justify-end" : ""}
                 >
                   {m.role === "user" ? (
-                    <div className="bg-[#2f2f2f] px-4 py-3 rounded-2xl max-w-[75%] text-[15px]">
-                      {m.text}
+                    <div className="flex flex-col items-end max-w-[75%]">
+                      {/* Image (separate block) */}
+                      {m.image && (
+                        <img
+                          src={`data:image/png;base64,${m.image}`}
+                          alt="preview"
+                          className="mb-2 w-32 h-32 object-cover rounded-xl border border-[#3a3a3a]"
+                        />
+                      )}
+
+                      {m.text && (
+                        <div className="bg-[#2f2f2f] px-4 py-3 rounded-2xl text-[15px]">
+                          {m.text}
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <div
@@ -192,26 +211,74 @@ export default function Gemini() {
           <div ref={endRef} />
         </div>
 
-        {/* Input */}
-        <form onSubmit={sendMessage} className="max-w-4xl">
-          <div className="relative w-full">
-            <input
-              className="w-full bg-[#2f2f2f] sm:p-4 p-3 pr-20 rounded-full focus:outline-none text-[15px]"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask anything..."
-            />
+        <div className="w-full">
+          <form onSubmit={sendMessage} className="max-w-4xl">
+            {selectedFile && (
+              <div className="mb-1 relative w-fit">
+                <img
+                  src={`data:image/png;base64,${selectedFile}`}
+                  alt="preview"
+                  className="w-24 h-24 object-cover rounded-xl border border-[#3a3a3a]"
+                />
 
-            <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              className="absolute top-1/2 sm:right-2 right-1 -translate-y-1/2 px-4 py-2 rounded-full bg-white text-black font-medium disabled:opacity-50"
-            >
-              Ask
-            </button>
-          </div>
-        </form>
-        <div className="text-sm text-center mt-2 text-gray-300">
+                <button
+                  type="button"
+                  onClick={() => setSelectedFile(null)}
+                  className="absolute cursor-pointer -top-2 -right-2 bg-black text-white rounded-full w-6 h-6 text-xs flex items-center justify-center"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+
+            <div className="relative flex items-center">
+              <input
+                type="file"
+                accept="image/*"
+                id="imageUpload"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+
+                  const reader = new FileReader();
+
+                  reader.onloadend = () => {
+                    const base64 = reader.result.split(",")[1];
+                    setSelectedFile(base64);
+                  };
+
+                  reader.readAsDataURL(file);
+                }}
+              />
+              <label
+                htmlFor="imageUpload"
+                className="absolute left-5 cursor-pointer text-gray-400 hover:text-white transition"
+              >
+                <Add size={20} />
+              </label>
+
+              <input
+                className="w-full bg-[#2f2f2f] sm:py-4 p-3 pl-12 pr-20 rounded-full focus:outline-none text-[15px] text-white placeholder-gray-400"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={
+                  selectedFile ? "Ask about selected file" : "Ask anything"
+                }
+              />
+
+              <button
+                type="submit"
+                disabled={loading || !input.trim()}
+                className="absolute sm:scale-100 scale-95 sm:right-2 right-1 bg-white text-black px-4 py-2 rounded-full font-medium disabled:opacity-50"
+              >
+                Ask
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div className="text-sm text-center text-gray-300">
           Chatbot can make mistakes
         </div>
       </div>

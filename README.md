@@ -58,11 +58,9 @@ Open **http://localhost:3000** in your browser.
 
 ## 📸 Screenshots
 
-![Screenshot 1](./public//screenshot_2.png)
+![Screenshot 1](./public//screenshot_3.png)
 
-![Screenshot 2](./public//screenshot_3.png)
-
-![Screenshot 3](./public//screenshot_1.png)
+![Screenshot 2](./public//screenshot_4.png)
 
 ---
 
