@@ -66,7 +66,7 @@ export default function Gemini() {
 
   return (
     <div className="w-full bg-[#212121] text-[#ECECEC] font-sans">
-      <div className="h-screen max-w-4xl mx-auto p-6 grid grid-rows-[auto_1fr_auto_auto]">
+      <div className="h-screen max-w-4xl mx-auto p-6 grid grid-rows-[auto_1fr_auto_7px]">
         <div className="flex items-center justify-between mb-6 border-b border-[#303030] pb-4">
           <h1 className="text-2xl md:text-3xl font-semibold tracking-wide">
             Chatbot
@@ -111,9 +111,10 @@ export default function Gemini() {
                   ) : (
                     <div
                       className="
-                        max-w-[85%]
+                        max-w-full
                         text-[15px]
                         leading-7
+                        [&_h2]:text-2xl
                         [&_ol]:list-decimal
                         [&_ol]:ml-6
                         [&_ol]:my-4
@@ -259,7 +260,7 @@ export default function Gemini() {
               </label>
 
               <input
-                className="w-full bg-[#2f2f2f] sm:py-4 p-3 pl-12 pr-20 rounded-full focus:outline-none text-[15px] text-white placeholder-gray-400"
+                className="w-full bg-[#2f2f2f] sm:py-4 p-3 pl-12 pr-20 rounded-full focus:outline-none text-white placeholder-gray-400"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={
@@ -278,7 +279,7 @@ export default function Gemini() {
           </form>
         </div>
 
-        <div className="text-sm text-center text-gray-300">
+        <div className="text-sm text-center mt-1 text-gray-300">
           Chatbot can make mistakes
         </div>
       </div>

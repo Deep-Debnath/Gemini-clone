@@ -1,11 +1,11 @@
-# 🤖 Gemini-Clone — AI Chat Application
+# 🤖 Ai Chatbot — AI Chat Application
 
-Gemini-Clone is a modern AI Chat App inspired by Google’s Gemini and ChatGPT.  
-It allows users to interact with an AI model in real time using the **Gemini API**, built with **Next.js**, **Axios**, **Framer motion**, **Material Ui** and **TailwindCSS**. The app supports smooth message flow, animations, and persistent chat storage.
+Chatbot is a modern AI Chat App inspired by Google’s Gemini and ChatGPT.  
+It allows users to interact with an AI model in real time using the **Gemini API**, built with **Next.js**, **Axios**, **Framer motion**, **Material Ui** and **TailwindCSS**. The app supports smooth message and image flow, animations, and persistent chat storage.
 
 ---
 
-🚀 **Live Demo:** [https://gemini-clone-5csw.vercel.app/](https://gemini-clone-5csw.vercel.app/)
+🚀 **Live Demo:** [chatbot-vercel.app](https://gemini-clone-5csw.vercel.app)
 
 ---
 
@@ -58,9 +58,9 @@ Open **http://localhost:3000** in your browser.
 
 ## 📸 Screenshots
 
-![Screenshot 1](./public//screenshot_3.png)
-
-![Screenshot 2](./public//screenshot_4.png)
+![Screenshot 3](./public//screenshot-1.png)
+![Screenshot 2](./public//screenshot-2.png)
+![Screenshot 1](./public//screenshot-3.png)
 
 ---
 
