@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Gemini Chat | Smart AI Chat Assistant",
+  title: "Chatbot | Smart AI Chat Assistant",
   description:
     "Chat intelligently with Gemini — a sleek AI-powered assistant built using Next.js and Gemini API. Enjoy real-time responses, clean UI, and persistent memory for a next-gen chat experience.",
   keywords: [
@@ -29,21 +29,21 @@ export const metadata = {
   authors: [
     {
       name: "Deep Debnath",
-      url: "https://my-portfolio-7432.vercel.app/",
+      url: "https://deep-debnath-portfolio.vercel.app",
     },
   ],
   openGraph: {
-    title: "Gemini Chat | Smart AI Chat Assistant",
+    title: "Chatbot | Smart AI Chat Assistant",
     description:
       "A modern Gemini-powered chat experience — fast, interactive, and beautifully designed with Next.js.",
     url: "https://gemini-clone-5csw.vercel.app/",
     siteName: "Gemini Chat",
     images: [
       {
-        url: "https://www.gstatic.com/lamda/images/gemini_aurora_thumbnail_4g_e74822ff0ca4259beb718.png",
+        url: "https://botnation.ai/site/wp-content/uploads/2022/02/meilleur-chatbot.jpg",
         width: 1200,
         height: 630,
-        alt: "Gemini Chat Preview",
+        alt: "Chatbot Preview",
       },
     ],
     locale: "en_US",
@@ -51,13 +51,13 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gemini Chat | Smart AI Chat Assistant",
+    title: "Chatbot | Smart AI Chat Assistant",
     description:
       "Experience Gemini AI — a sleek, intelligent chat assistant built with Next.js and modern UI.",
     images: [
-      "https://www.gstatic.com/lamda/images/gemini_aurora_thumbnail_4g_e74822ff0ca4259beb718.png",
+      "https://botnation.ai/site/wp-content/uploads/2022/02/meilleur-chatbot.jpg",
     ],
-    creator: "@deepdevnath",
+    creator: "@deepdebnath",
   },
   icons: {
     icon: "/favicon.ico",
