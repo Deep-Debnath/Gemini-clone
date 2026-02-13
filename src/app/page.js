@@ -69,7 +69,7 @@ export default function Gemini() {
       <div className="h-screen max-w-4xl mx-auto p-3 grid grid-rows-[auto_1fr_auto_7px]">
         <div className="flex items-center justify-between mb-6 border-b border-[#303030] pb-4">
           <h1 className="text-2xl md:text-3xl font-semibold tracking-wide">
-            Chatbot
+            DeepChat
           </h1>
 
           <button
@@ -279,7 +279,7 @@ export default function Gemini() {
         </div>
 
         <div className="text-sm text-center mt-1 text-gray-300">
-          Chatbot can make mistakes
+          DeepChat can make mistakes
         </div>
       </div>
     </div>

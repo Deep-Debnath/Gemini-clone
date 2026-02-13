@@ -1,11 +1,11 @@
-# 🤖 Ai Chatbot — AI Chat Application
+# 🤖 DeepChat Assistant — AI Chat Application
 
 Chatbot is a modern AI Chat App inspired by Google’s Gemini and ChatGPT.  
 It allows users to interact with an AI model in real time using the **Gemini API**, built with **Next.js**, **Axios**, **Framer motion**, **Material Ui** and **TailwindCSS**. The app supports smooth message and image flow, animations, and persistent chat storage.
 
 ---
 
-🚀 **Live Demo:** [chatbot-vercel.app](https://gemini-clone-5csw.vercel.app)
+🚀 **Live Demo:** [ DeepChat-Assistant ](https://deepchat-assistant.vercel.app)
 
 ---
 

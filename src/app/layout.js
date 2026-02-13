@@ -12,10 +12,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Chatbot | Smart AI Chat Assistant",
+  title: "DeepChat | Smart AI Chat Assistant",
   description:
     "Chat intelligently with Gemini — a sleek AI-powered assistant built using Next.js and Gemini API. Enjoy real-time responses, clean UI, and persistent memory for a next-gen chat experience.",
   keywords: [
+    "DeepChat",
     "Gemini Chat",
     "AI Chat App",
     "Next.js Chatbot",
@@ -33,10 +34,10 @@ export const metadata = {
     },
   ],
   openGraph: {
-    title: "Chatbot | Smart AI Chat Assistant",
+    title: "DeepChat | Smart AI Chat Assistant",
     description:
       "A modern Gemini-powered chat experience — fast, interactive, and beautifully designed with Next.js.",
-    url: "https://gemini-clone-5csw.vercel.app/",
+    url: "https://deepchat-assistant.vercel.app/",
     siteName: "Gemini Chat",
     images: [
       {
@@ -51,7 +52,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chatbot | Smart AI Chat Assistant",
+    title: "DeepChat | Smart AI Chat Assistant",
     description:
       "Experience Gemini AI — a sleek, intelligent chat assistant built with Next.js and modern UI.",
     images: [
