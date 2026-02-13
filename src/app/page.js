@@ -66,7 +66,7 @@ export default function Gemini() {
 
   return (
     <div className="w-full bg-[#212121] text-[#ECECEC] font-sans">
-      <div className="h-screen max-w-4xl mx-auto p-3 grid grid-rows-[auto_1fr_auto_auto]">
+      <div className="h-screen max-w-4xl mx-auto px-3 pt-3 grid grid-rows-[auto_1fr_auto_auto]">
         <div className="flex items-center justify-between mb-6 border-b border-[#303030] pb-4">
           <h1 className="text-2xl md:text-3xl font-semibold tracking-wide">
             DeepChat
@@ -277,9 +277,17 @@ export default function Gemini() {
             </div>
           </form>
         </div>
-
-        <div className="text-sm text-center mt-1 text-gray-300">
-          DeepChat can make mistakes
+        <div className="flex justify-evenly space-x-2 mb-1 flex-wrap">
+          <div className="text-xs text-center sm:mt-1 text-gray-300">
+            DeepChat can make mistakes
+          </div>
+          <a
+            target="_blank"
+            href="https://deep-debnath-portfolio.vercel.app"
+            className="text-[11px] text-center sm:mt-1 mt-[1px] text-gray-400"
+          >
+            Created by Deep Debnath · 2026
+          </a>
         </div>
       </div>
     </div>
