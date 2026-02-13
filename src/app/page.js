@@ -8,7 +8,7 @@ import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Add, ContentCopy, Done } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import { IconButton, useMediaQuery, useTheme } from "@mui/material";
 
 export default function Gemini() {
   const [loading, setLoading] = useState(false);
@@ -17,6 +17,8 @@ export default function Gemini() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [copiedIndex, setCopiedIndex] = useState(null);
   const endRef = useRef(null);
+  const scr = useTheme();
+  const isSmall = useMediaQuery(scr.breakpoints.up(400));
 
   useEffect(() => {
     const saved = localStorage.getItem("gemini-chat");
@@ -278,9 +280,11 @@ export default function Gemini() {
           </form>
         </div>
         <div className="flex justify-evenly space-x-2 mb-1 flex-wrap">
-          <div className="text-xs text-center sm:mt-1 text-gray-300">
-            DeepChat can make mistakes
-          </div>
+          {isSmall && (
+            <div className="text-xs text-center sm:mt-1 text-gray-300">
+              DeepChat can make mistakes
+            </div>
+          )}
           <a
             target="_blank"
             href="https://deep-debnath-portfolio.vercel.app"
